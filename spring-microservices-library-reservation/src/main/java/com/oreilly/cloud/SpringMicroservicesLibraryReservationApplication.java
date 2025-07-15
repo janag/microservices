@@ -1,6 +1,7 @@
 package com.oreilly.cloud;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import java.security.SecureRandom;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -41,7 +42,7 @@ public class SpringMicroservicesLibraryReservationApplication {
     reservation.setBookId(bookId);
     reservation.setUsername(username);
     reservation.setDate(new Date());
-    reservation.setReservationId(new Random().nextInt(100));
+    reservation.setReservationId(new SecureRandom().nextInt(100));
     reservations.put(reservation.getReservationId(), reservation);
     System.out.println(reservations.size());
     return "Title has been reserved using server on port: " + port + ".";
